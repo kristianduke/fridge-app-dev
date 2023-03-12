@@ -20,43 +20,44 @@ class Home extends StatelessWidget {
             TextButton(
               onPressed: () {},
               child: Text(
-                'Heres a link',
+                'Ingredients',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Colors.black,
+                  fontSize: 40.0,
                 ),
               ),
             ),
-            const SizedBox(height: 10),
             TextButton(
               onPressed: () {},
               child: Text(
-                'Heres another link',
+                'Favourite Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Colors.black,
+                  fontSize: 40.0,
                 ),
               ),
             ),
-            const SizedBox(height: 10),
             TextButton(
               onPressed: () {},
               child: Text(
-                'Heres another link',
+                'Browse Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Colors.black,
+                  fontSize: 40.0,
                 ),
               ),
             ),
-            const SizedBox(height: 10),
             TextButton(
               onPressed: () {},
               child: Text(
-                'Heres another link',
+                'Suggested Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Colors.black,
+                  fontSize: 40.0,
                 ),
               ),
             ),
