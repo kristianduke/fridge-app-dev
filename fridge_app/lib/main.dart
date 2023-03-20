@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'BrowseRecipes.dart';
+import 'FavouriteRecipes.dart';
+import 'Ingredients.dart';
+import 'SuggestedRecipes.dart';
+
 void main() {
-  runApp(MaterialApp(home: Home()));
+  runApp(const MaterialApp(home: Home()));
 }
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fridge App thing'),
+        title: const Text('Fridge App thing'),
         centerTitle: true,
         backgroundColor: Colors.blue[600],
       ),
@@ -18,8 +25,13 @@ class Home extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextButton(
-              onPressed: () {},
-              child: Text(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Ingredients()),
+                );
+              },
+              child: const Text(
                 'Ingredients',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -29,8 +41,13 @@ class Home extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FavouriteRecipes()),
+                );
+              },
+              child: const Text(
                 'Favourite Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -40,8 +57,13 @@ class Home extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BrowseRecipes()),
+                );
+              },
+              child: const Text(
                 'Browse Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -51,8 +73,13 @@ class Home extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SuggestedRecipes()),
+                );
+              },
+              child: const Text(
                 'Suggested Recipes',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -67,3 +94,10 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
