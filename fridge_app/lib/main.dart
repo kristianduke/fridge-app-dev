@@ -20,7 +20,13 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue[600],
       ),
-      body: Center(
+      body: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(32),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/home-screen.png'), fit: BoxFit.cover),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -44,7 +50,8 @@ class Home extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const FavouriteRecipes()),
+                  MaterialPageRoute(
+                      builder: (context) => const FavouriteRecipes()),
                 );
               },
               child: const Text(
@@ -60,7 +67,8 @@ class Home extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const BrowseRecipes()),
+                  MaterialPageRoute(
+                      builder: (context) => const BrowseRecipes()),
                 );
               },
               child: const Text(
@@ -76,7 +84,8 @@ class Home extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SuggestedRecipes()),
+                  MaterialPageRoute(
+                      builder: (context) => const SuggestedRecipes()),
                 );
               },
               child: const Text(
@@ -94,10 +103,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
