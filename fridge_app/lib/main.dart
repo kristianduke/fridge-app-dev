@@ -15,11 +15,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fridge App thing'),
-        centerTitle: true,
-        backgroundColor: Colors.blue[600],
-      ),
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(32),
