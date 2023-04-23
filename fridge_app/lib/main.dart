@@ -15,16 +15,29 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 33, 33, 33),
       body: Container(
-        alignment: Alignment.center,
+        alignment: const Alignment(0, -0.3),
         padding: const EdgeInsets.all(32),
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/home-screen.png'), fit: BoxFit.cover),
+              image: AssetImage('assets/home-screen.png'), fit: BoxFit.contain),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 120.0),
+              child: Text(
+                'Fridge App Title',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 33, 33, 33),
+                  fontFamily: 'CartoonistHand',
+                  fontSize: 70,
+                ),
+              ),
+            ),
             TextButton(
               onPressed: () {
                 Navigator.push(
@@ -35,9 +48,9 @@ class Home extends StatelessWidget {
               child: const Text(
                 'Ingredients',
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.black,
-                  fontSize: 40.0,
+                  color: Color.fromARGB(255, 33, 33, 33),
+                  fontFamily: 'CartoonistHand',
+                  fontSize: 50.0,
                 ),
               ),
             ),
@@ -52,9 +65,9 @@ class Home extends StatelessWidget {
               child: const Text(
                 'Favourite Recipes',
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.black,
-                  fontSize: 40.0,
+                  color: Color.fromARGB(255, 33, 33, 33),
+                  fontFamily: 'CartoonistHand',
+                  fontSize: 50.0,
                 ),
               ),
             ),
@@ -69,9 +82,9 @@ class Home extends StatelessWidget {
               child: const Text(
                 'Browse Recipes',
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.black,
-                  fontSize: 40.0,
+                  color: Color.fromARGB(255, 33, 33, 33),
+                  fontFamily: 'CartoonistHand',
+                  fontSize: 50.0,
                 ),
               ),
             ),
@@ -85,10 +98,11 @@ class Home extends StatelessWidget {
               },
               child: const Text(
                 'Suggested Recipes',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.black,
-                  fontSize: 40.0,
+                  color: Color.fromARGB(255, 33, 33, 33),
+                  fontFamily: 'CartoonistHand',
+                  fontSize: 50.0,
                 ),
               ),
             ),
