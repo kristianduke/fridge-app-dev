@@ -30,27 +30,47 @@ class Home extends StatelessWidget {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(30),
                   child: Text(
                     'Fridge App Title',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 70,
+                        fontSize: 80,
                         color: Colors.white,
                         fontFamily: 'CartoonistHand'),
                   ),
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(width: 2),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
+                  child: SizedBox(
+                    width: 120,
+                    height: 40,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(width: 2),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        Positioned(
+                          top: 10,
+                          left: 2,
+                          child: Container(
+                            width: 115,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(width: 2),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
+                  ),
                 )
               ],
             ),
