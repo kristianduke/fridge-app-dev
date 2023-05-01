@@ -5,6 +5,10 @@ class Ingredients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
+        backgroundColor: const Color(0xFF526dd1));
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -49,14 +53,18 @@ class Ingredients extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
                         hintText: 'Search',
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 0.0)),
                       ),
                     ),
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.search),
+                  icon: const Icon(Icons.search, color: Colors.white,),
                   onPressed: () {},
                 ),
               ],
@@ -67,6 +75,7 @@ class Ingredients extends StatelessWidget {
           ],
         ),
       ),
+      backgroundColor: const Color(0xFF36393E),
     );
   }
 }

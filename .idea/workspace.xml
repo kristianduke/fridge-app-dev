@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26739d-c967-4038-b787-0efc250f2dfe" name="Changes" comment="- Changed the app bar of all the pages">
+    <list default="true" id="6a26739d-c967-4038-b787-0efc250f2dfe" name="Changes" comment="- Added buttons to ingredients screen ( not finished )">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/SuggestedRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/SuggestedRecipes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="new-UI" />
+        <entry key="$PROJECT_DIR$" value="UI_branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682971101436</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Added buttons to ingredients screen ( not finished )">
+      <created>1682971323633</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682971323633</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +139,7 @@
     <MESSAGE value="-Updated menu text colour to white&#10;-Updated Appbar colour and font for each page&#10;-Added buttons and search bar for ingredients page" />
     <MESSAGE value="-Updated menu text colour to white&#10;-Updated Appbar colour and font for each page&#10;-Added buttons and search bar for ingredients page&#10;&#10;Work please" />
     <MESSAGE value="- Changed the app bar of all the pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Changed the app bar of all the pages" />
+    <MESSAGE value="- Added buttons to ingredients screen ( not finished )" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added buttons to ingredients screen ( not finished )" />
   </component>
 </project>

@@ -18,6 +18,7 @@ class FavouriteRecipes extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 82, 109, 209),
       ),
+        backgroundColor: const Color(0xFF36393E)
     );
   }
 }
