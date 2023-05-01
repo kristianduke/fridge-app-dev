@@ -12,7 +12,7 @@ class Ingredients extends StatelessWidget {
           'Ingredients',
           style: TextStyle(
             fontFamily: 'CartoonistHand',
-            fontSize: 32,
+            fontSize: 40,
           ),
         ),
         centerTitle: true,

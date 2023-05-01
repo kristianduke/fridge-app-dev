@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class FavouriteRecipes extends StatelessWidget {
   const FavouriteRecipes({super.key});
 
@@ -8,9 +7,16 @@ class FavouriteRecipes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favourite Recipes'),
+        toolbarHeight: 100,
+        title: const Text(
+          'Favourite Recipes',
+          style: TextStyle(
+            fontFamily: 'CartoonistHand',
+            fontSize: 40,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blue[600],
+        backgroundColor: const Color.fromARGB(255, 82, 109, 209),
       ),
     );
   }

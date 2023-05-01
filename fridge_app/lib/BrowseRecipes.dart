@@ -7,9 +7,16 @@ class BrowseRecipes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Browse Recipes'),
+        toolbarHeight: 100,
+        title: const Text(
+          'Browse Recipes',
+          style: TextStyle(
+            fontFamily: 'CartoonistHand',
+            fontSize: 40,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blue[600],
+        backgroundColor: const Color.fromARGB(255, 82, 109, 209),
       ),
     );
   }
