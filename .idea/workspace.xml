@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26739d-c967-4038-b787-0efc250f2dfe" name="Changes" comment="- Added buttons to ingredients screen ( not finished )">
+    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-test">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/SuggestedRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/SuggestedRecipes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

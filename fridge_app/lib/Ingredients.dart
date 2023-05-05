@@ -42,7 +42,7 @@ class Ingredients extends StatelessWidget {
                 ElevatedButton(
                   style: buttonStyle,
                   onPressed: () {},
-                  child: const Text('Filter by date'),
+                  child: const Text('Filter Recent'),
                 ),
               ],
             ),
