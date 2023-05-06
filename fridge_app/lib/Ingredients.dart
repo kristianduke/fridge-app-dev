@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'AddIngredients.dart';
+
 class Ingredients extends StatelessWidget {
   const Ingredients({super.key});
 
@@ -31,7 +33,13 @@ class Ingredients extends StatelessWidget {
               children: <Widget>[
                 ElevatedButton(
                   style: buttonStyle,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddIngredients()),
+                    );
+                  },
                   child: const Text('Add'),
                 ),
                 ElevatedButton(
@@ -64,7 +72,10 @@ class Ingredients extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.search, color: Colors.white,),
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
                   onPressed: () {},
                 ),
               ],
