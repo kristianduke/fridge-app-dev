@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-test">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" afterDir="false" />
+    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update">
+      <change afterPath="$PROJECT_DIR$/fridge_app/lib/RecipeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="UI_branch" />
+        <entry key="$PROJECT_DIR$" value="new-UI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,7 +67,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a26739d-c967-4038-b787-0efc250f2dfe" name="Changes" comment="" />
+      <changelist id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
       <created>1679336051409</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -107,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682971323633</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update">
+      <created>1683320386074</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683320386074</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +147,7 @@
     <MESSAGE value="-Updated menu text colour to white&#10;-Updated Appbar colour and font for each page&#10;-Added buttons and search bar for ingredients page&#10;&#10;Work please" />
     <MESSAGE value="- Changed the app bar of all the pages" />
     <MESSAGE value="- Added buttons to ingredients screen ( not finished )" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added buttons to ingredients screen ( not finished )" />
+    <MESSAGE value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
   </component>
 </project>

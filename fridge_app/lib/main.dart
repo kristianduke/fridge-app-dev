@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'BrowseRecipes.dart';
-import 'FavouriteRecipes.dart';
+import 'RecipeScreen.dart';
 import 'Ingredients.dart';
 import 'SuggestedRecipes.dart';
 
@@ -136,11 +136,11 @@ class Home extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FavouriteRecipes()),
+                          builder: (context) => const RecipeScreen()),
                     );
                   },
                   child: const Text(
-                    'Favourite Recipes',
+                    'Recipe screen test',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'CartoonistHand',

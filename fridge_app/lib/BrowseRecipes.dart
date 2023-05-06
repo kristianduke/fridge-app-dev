@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'RecipeScreen.dart';
 
 class BrowseRecipes extends StatefulWidget {
   const BrowseRecipes({super.key});
@@ -22,6 +23,7 @@ class MyFlutterState extends State<BrowseRecipes> {
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
         backgroundColor: const Color(0xFF526dd1));
+
 
     return Scaffold(
         appBar: AppBar(
@@ -94,6 +96,11 @@ class MyFlutterState extends State<BrowseRecipes> {
                             isFavorite = !isFavorite;
                             favorites[index] = isFavorite;
                           });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RecipeScreen()),
+                          );
                         },
                         child: Container(
                           height: 100,
