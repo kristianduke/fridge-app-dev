@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class AddIngredients extends StatelessWidget {
   const AddIngredients({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
+    DateTime today = DateTime.now();
+
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
         backgroundColor: const Color(0xFF526dd1));
@@ -106,16 +112,17 @@ class AddIngredients extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(40, 0, 40, 20),
-              child: TextField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                  hintText: '*calender widget*',
-                ),
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(vertical: 0, horizontal: width * 0.1),
+              child: Container(
+                color: Colors.white,
+                child: TableCalendar(
+                    headerStyle: const HeaderStyle(
+                        formatButtonVisible: false, titleCentered: true),
+                    focusedDay: today,
+                    firstDay: DateTime.utc(2023, 01, 01),
+                    lastDay: DateTime.utc(2050, 12, 31)),
               ),
             ),
             SizedBox(
