@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class AddIngredients extends StatelessWidget {
+class AddIngredients extends StatefulWidget {
   const AddIngredients({super.key});
+
+  @override
+  State<AddIngredients> createState() => AddIngredientsState();
+}
+
+class AddIngredientsState extends State<AddIngredients> {
+  DateTime today = DateTime.now();
+  void _onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      today = day;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-
-    DateTime today = DateTime.now();
 
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
@@ -118,11 +128,15 @@ class AddIngredients extends StatelessWidget {
               child: Container(
                 color: Colors.white,
                 child: TableCalendar(
-                    headerStyle: const HeaderStyle(
-                        formatButtonVisible: false, titleCentered: true),
-                    focusedDay: today,
-                    firstDay: DateTime.utc(2023, 01, 01),
-                    lastDay: DateTime.utc(2050, 12, 31)),
+                  headerStyle: const HeaderStyle(
+                      formatButtonVisible: false, titleCentered: true),
+                  availableGestures: AvailableGestures.all,
+                  selectedDayPredicate: (day) => isSameDay(day, today),
+                  focusedDay: today,
+                  firstDay: DateTime.utc(2023, 01, 01),
+                  lastDay: DateTime.utc(2050, 12, 31),
+                  onDaySelected: _onDaySelected,
+                ),
               ),
             ),
             SizedBox(
