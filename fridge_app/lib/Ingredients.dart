@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'AddIngredients.dart';
+import 'package:intl/intl.dart';
 
 class Ingredient {
   String name;
   String quantity;
   String weight;
+  DateTime expiryDate;
 
   Ingredient(
-      {required this.name, required this.quantity, required this.weight});
+      {required this.name,
+      required this.quantity,
+      required this.weight,
+      required this.expiryDate});
 }
+
 final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
     backgroundColor: const Color(0xFF526dd1));
@@ -23,19 +29,18 @@ class Ingredients extends StatefulWidget {
 }
 
 class MyFlutterState extends State<Ingredients> {
+
+
   final List<Ingredient> _ingredients = List.generate(
-    15,
-        (index) => Ingredient(
-      name: 'Ingredient ${index + 1}',
-      quantity: '${index + 1} units',
-      weight: '${(index + 1) * 10} g',
-    ),
-  );
+      15,
+      (index) => Ingredient(
+          name: 'Ingredient ${index + 1}',
+          quantity: '${index + 1} units',
+          weight: '${(index + 1) * 10} g',
+          expiryDate: DateTime.now()));
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -134,7 +139,7 @@ class MyFlutterState extends State<Ingredients> {
 
   void _showIngredientDetails(Ingredient ingredient) {
     final ButtonStyle buttonStyleRed = ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
         backgroundColor: Colors.redAccent);
 
@@ -160,6 +165,11 @@ class MyFlutterState extends State<Ingredients> {
                       color: Colors.white),
                 ),
                 Text("Weight: ${ingredient.weight}",
+                    style: const TextStyle(
+                        fontFamily: 'CartoonistHand',
+                        fontSize: 30,
+                        color: Colors.white)),
+                Text("Expiry Date: ${ingredient.expiryDate}",
                     style: const TextStyle(
                         fontFamily: 'CartoonistHand',
                         fontSize: 30,

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Created a recipe screen">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Created the ingredients list &#10;-Created ingredients description">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" afterDir="false" />
     </list>
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="new-UI" />
+        <entry key="$PROJECT_DIR$" value="local-storage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -120,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683387858542</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="-Created the ingredients list &#10;-Created ingredients description">
+      <created>1683729473292</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683729473292</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +160,7 @@
     <MESSAGE value="- Added buttons to ingredients screen ( not finished )" />
     <MESSAGE value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
     <MESSAGE value="-Created a recipe screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Created a recipe screen" />
+    <MESSAGE value="-Created the ingredients list &#10;-Created ingredients description" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Created the ingredients list &#10;-Created ingredients description" />
   </component>
 </project>
