@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update">
-      <change afterPath="$PROJECT_DIR$/fridge_app/lib/RecipeScreen.dart" afterDir="false" />
+    <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Created the ingredients list &#10;-Created ingredients description">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/Ingredients.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="new-UI" />
+        <entry key="$PROJECT_DIR$" value="local-storage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,7 +112,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683320386074</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-Created a recipe screen">
+      <created>1683387858542</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683387858542</updated>
+    </task>
+    <task id="LOCAL-00008" summary="-Created the ingredients list &#10;-Created ingredients description">
+      <created>1683729473292</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683729473292</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +140,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="UI_branch" />
+                        <option value="origin/local-storage" />
                       </list>
                     </value>
                   </entry>
@@ -148,6 +159,8 @@
     <MESSAGE value="- Changed the app bar of all the pages" />
     <MESSAGE value="- Added buttons to ingredients screen ( not finished )" />
     <MESSAGE value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
+    <MESSAGE value="-Created a recipe screen" />
+    <MESSAGE value="-Created the ingredients list &#10;-Created ingredients description" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Created the ingredients list &#10;-Created ingredients description" />
   </component>
 </project>
