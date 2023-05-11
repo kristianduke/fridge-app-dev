@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "510201846832",
+    "project_id": "setap-fridge-app",
+    "storage_bucket": "setap-fridge-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510201846832:android:1b0b1ca982209f8bd261f5",
+        "android_client_info": {
+          "package_name": "com.example.fridge_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510201846832-eimfo3g7o837oehqkgst1b8uim5bobq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4fCAB7Z2zdqlujvUu8vs1E7nI8lr8CIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510201846832-eimfo3g7o837oehqkgst1b8uim5bobq7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "510201846832-g9mtbh8d47t9un3ci2c3juiak5af5gt4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fridgeApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

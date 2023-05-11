@@ -1,24 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'RecipeScreen.dart';
+import 'components/containers/list_container.dart';
 
 class BrowseRecipes extends StatefulWidget {
   const BrowseRecipes({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return MyFlutterState();
-  }
+  State<StatefulWidget> createState() => _BrowseRecipesState();
 }
 
-class MyFlutterState extends State<BrowseRecipes> {
+class _BrowseRecipesState extends State<BrowseRecipes> {
+  final _recipesRef = FirebaseFirestore.instance.collection('recipes');
+
+  String _searchQuery = '';
+
   @override
   Widget build(BuildContext context) {
-    final List<String> items =
-        List.generate(10, (index) => "Insert recipe here ${index + 1}");
-
-// line of code that generates the recipes
-
-    List<bool> favorites = List.generate(20, (index) => false);
 
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
@@ -42,102 +40,87 @@ class MyFlutterState extends State<BrowseRecipes> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  ElevatedButton(
-                    style: buttonStyle,
-                    onPressed: () {},
-                    child: const Text('Filter by recent'),
-                  ),
-                  ElevatedButton(
-                    style: buttonStyle,
-                    onPressed: () {},
-                    child: const Text('Filter A-Z'),
-                  ),
-                ],
-              ),
+              SizedBox(height: 20),
               Row(
                 children: <Widget>[
-                  const Expanded(
+                  Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: TextField(
+                        onChanged: (value){
+                          setState(() {
+                            _searchQuery = value;
+                          });
+                        },
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Search',
-                          enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 0.0)),
+                          fillColor: Colors.black12,
+                          hintText: 'Search...',
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Icon(Icons.search, color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20.0),
+                          )
                         ),
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {},
-                  ),
                 ],
               ),
-              Expanded(
+              SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(items.length, (index) {
-                      final item = items[index];
-                      bool isFavorite = favorites[index];
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: _recipesRef.where('lowerName', isGreaterThanOrEqualTo: _searchQuery.toLowerCase())
+                        .where('lowerName', isLessThan: '${_searchQuery.toLowerCase()}z').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                      if(snapshot.hasError){
+                        return const Text("Something went wrong!");
+                      }
 
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isFavorite = !isFavorite;
-                            favorites[index] = isFavorite;
-                          });
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RecipeScreen()),
-                          );
-                        },
-                        child: Container(
-                          height: 100,
-                          color: const Color(0xFF526dd1),
-                          margin: EdgeInsets.all(10),
-                          child: Row(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(
-                                  isFavorite ? Icons.star : Icons.star_border,
-                                  color:
-                                      isFavorite ? Colors.yellow : Colors.white,
-                                ),
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return const Center(
+                          child: CircularProgressIndicator()
+                        );
+                      }
+
+                      // Generate Recipe Menu, Once Recipes have been received.
+                      return ListContainer(
+                        child: ListView(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: [
+                            if(!snapshot.hasData || snapshot.data!.docs.isEmpty)
+                              const Text("No Recipes Found!!!")
+                            else
+                            ...snapshot.data!.docs.map((DocumentSnapshot document) {
+                            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                            return Column(children: [
+                              ElevatedButton(
                                 onPressed: () {
-                                  setState(() {
-                                    isFavorite = !isFavorite;
-                                    favorites[index] = isFavorite;
-                                  });
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => RecipeScreen(document))
+                                  );
                                 },
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 40,
-                                        fontFamily: 'CartoonistHand'),
+                                style: buttonStyle,
+                                child: ListTile(
+                                  title: Text(
+                                    data['name'],
+                                    style: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand', color: Colors.white),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
+                              const SizedBox(height: 20), // Padding
+                            ]
+                            );
+                          }).toList()],
+                        )
                       );
-                    }),
+                    },
                   ),
                 ),
               ),
