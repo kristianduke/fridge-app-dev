@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fridge_app/components/containers/list_container.dart';
 import 'package:fridge_app/utility/DatabaseManager.dart';
 import 'AddIngredients.dart';
-import 'package:intl/intl.dart';
 
 import 'data/Recipe.dart';
 
@@ -74,7 +73,7 @@ class _IngredientsState extends State<Ingredients> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
-                      onChanged: (value){
+                      onChanged: (value) {
                         setState(() {
                           // Update Search Query Here
                         });
@@ -85,12 +84,12 @@ class _IngredientsState extends State<Ingredients> {
                           fillColor: Colors.black12,
                           hintText: 'Search...',
                           hintStyle: const TextStyle(color: Colors.grey),
-                          prefixIcon: const Icon(Icons.search, color: Colors.white),
+                          prefixIcon:
+                              const Icon(Icons.search, color: Colors.white),
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.circular(20.0),
-                          )
-                      ),
+                          )),
                     ),
                   ),
                 )
@@ -100,58 +99,62 @@ class _IngredientsState extends State<Ingredients> {
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: FutureBuilder<List<Ingredient>?>(
-                future: DatabaseManager.getAllIngredients(),
-                builder: (context, AsyncSnapshot<List<Ingredient>?> ingredientSnap) {
-                  if(ingredientSnap.hasError){
-                    return const Text("Something went wrong!");
-                  }
+                  future: DatabaseManager.getAllIngredients(),
+                  builder: (context,
+                      AsyncSnapshot<List<Ingredient>?> ingredientSnap) {
+                    if (ingredientSnap.hasError) {
+                      return const Text("Something went wrong!");
+                    }
 
-                  if(ingredientSnap.connectionState == ConnectionState.waiting){
-                    return const Center(
-                        child: CircularProgressIndicator()
-                    );
-                  }
+                    if (ingredientSnap.connectionState ==
+                        ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-                  return ListContainer(child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: ingredientSnap.data!.length, //Maybe should be ! instead of ?
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: FutureBuilder<DocumentSnapshot>(
-                        future: ingredientSnap.data![index].ref.get(),
-                        builder: (fbContext, AsyncSnapshot<DocumentSnapshot> snapshot){
-                          if(snapshot.hasError){
-                            return const Text("Something went wrong!");
-                          }
+                    return ListContainer(
+                        child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: ingredientSnap
+                          .data!.length, //Maybe should be ! instead of ?
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: FutureBuilder<DocumentSnapshot>(
+                                future: ingredientSnap.data![index].ref.get(),
+                                builder: (fbContext,
+                                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                                  if (snapshot.hasError) {
+                                    return const Text("Something went wrong!");
+                                  }
 
-                          if(snapshot.connectionState == ConnectionState.waiting){
-                            return const Center(
-                                child: CircularProgressIndicator()
-                            );
-                          }
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  }
 
-                          return  Card(
-                            color: const Color(0xFF526dd1),
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                            child: ListTile(
-                              title: Text(snapshot.data?.get('name'),
-                                  style: const TextStyle(
-                                      fontFamily: 'CartoonistHand', fontSize: 40)),
-                              onTap: () {
-                                _showIngredientDetails(ingredientSnap.data![index], snapshot.data?.get('name'));
-                              },
-                              textColor: Colors.white,
-                            )
-                          );
-                        }
-                      )
-                    );
-                  },
-                  ));
-                }
-              ),
+                                  return Card(
+                                      color: const Color(0xFF526dd1),
+                                      shadowColor: Colors.transparent,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      child: ListTile(
+                                        title: Text(snapshot.data?.get('name'),
+                                            style: const TextStyle(
+                                                fontFamily: 'CartoonistHand',
+                                                fontSize: 40)),
+                                        onTap: () {
+                                          _showIngredientDetails(
+                                              ingredientSnap.data![index],
+                                              snapshot.data?.get('name'));
+                                        },
+                                        textColor: Colors.white,
+                                      ));
+                                }));
+                      },
+                    ));
+                  }),
             ),
           ],
         ),
