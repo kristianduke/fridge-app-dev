@@ -1,16 +1,46 @@
 import 'package:flutter/material.dart';
-
 import 'AddIngredients.dart';
+import 'package:intl/intl.dart';
 
-class Ingredients extends StatelessWidget {
+class Ingredient {
+  String name;
+  String quantity;
+  String weight;
+  DateTime expiryDate;
+
+  Ingredient(
+      {required this.name,
+      required this.quantity,
+      required this.weight,
+      required this.expiryDate});
+}
+
+final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+    textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
+    backgroundColor: const Color(0xFF526dd1));
+
+class Ingredients extends StatefulWidget {
   const Ingredients({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
-        backgroundColor: const Color(0xFF526dd1));
+  State<StatefulWidget> createState() {
+    return MyFlutterState();
+  }
+}
 
+class MyFlutterState extends State<Ingredients> {
+
+
+  final List<Ingredient> _ingredients = List.generate(
+      15,
+      (index) => Ingredient(
+          name: 'Ingredient ${index + 1}',
+          quantity: '${index + 1} units',
+          weight: '${(index + 1) * 10} g',
+          expiryDate: DateTime.now()));
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -81,12 +111,94 @@ class Ingredients extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Container(),
-            ),
+              child: ListView.builder(
+                itemCount: _ingredients.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: ListTile(
+                      title: Text(_ingredients[index].name,
+                          style: const TextStyle(
+                              fontFamily: 'CartoonistHand', fontSize: 40)),
+                      onTap: () {
+                        _showIngredientDetails(_ingredients[index]);
+                      },
+                      tileColor: const Color(0xFF526dd1),
+                      textColor: Colors.white,
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
       backgroundColor: const Color(0xFF36393E),
+    );
+  }
+
+  void _showIngredientDetails(Ingredient ingredient) {
+    final ButtonStyle buttonStyleRed = ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
+        backgroundColor: Colors.redAccent);
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            ingredient.name,
+            style: const TextStyle(
+                fontFamily: 'CartoonistHand',
+                fontSize: 60,
+                color: Colors.white),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "Quantity: ${ingredient.quantity}",
+                  style: const TextStyle(
+                      fontFamily: 'CartoonistHand',
+                      fontSize: 30,
+                      color: Colors.white),
+                ),
+                Text("Weight: ${ingredient.weight}",
+                    style: const TextStyle(
+                        fontFamily: 'CartoonistHand',
+                        fontSize: 30,
+                        color: Colors.white)),
+                Text("Expiry Date: ${ingredient.expiryDate}",
+                    style: const TextStyle(
+                        fontFamily: 'CartoonistHand',
+                        fontSize: 30,
+                        color: Colors.white)),
+                ElevatedButton(
+                  style: buttonStyleRed,
+                  onPressed: () {},
+                  child: const Text('Delete'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              style: buttonStyle,
+              child: const Text('Close',
+                  style: TextStyle(
+                      fontFamily: 'CartoonistHand',
+                      fontSize: 30,
+                      color: Colors.white)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+          backgroundColor: const Color(0xFF36393E),
+          insetPadding: const EdgeInsets.all(0),
+        );
+      },
     );
   }
 }
