@@ -36,96 +36,92 @@ class _BrowseRecipesState extends State<BrowseRecipes> {
           centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 82, 109, 209),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: TextField(
-                        onChanged: (value){
-                          setState(() {
-                            _searchQuery = value;
-                          });
-                        },
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.black12,
-                          hintText: 'Search...',
-                          hintStyle: const TextStyle(color: Colors.grey),
-                          prefixIcon: const Icon(Icons.search, color: Colors.white),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(20.0),
-                          )
-                        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(height: 20),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: TextField(
+                      onChanged: (value){
+                        setState(() {
+                          _searchQuery = value;
+                        });
+                      },
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.black12,
+                        hintText: 'Search...',
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: const Icon(Icons.search, color: Colors.white),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20.0),
+                        )
                       ),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: SingleChildScrollView(
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: _recipesRef.where('lowerName', isGreaterThanOrEqualTo: _searchQuery.toLowerCase())
-                        .where('lowerName', isLessThan: '${_searchQuery.toLowerCase()}z').snapshots(),
-                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
-                      if(snapshot.hasError){
-                        return const Text("Something went wrong!");
-                      }
-
-                      if(snapshot.connectionState == ConnectionState.waiting){
-                        return const Center(
-                          child: CircularProgressIndicator()
-                        );
-                      }
-
-                      // Generate Recipe Menu, Once Recipes have been received.
-                      return ListContainer(
-                        child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            if(!snapshot.hasData || snapshot.data!.docs.isEmpty)
-                              const Text("No Recipes Found!!!")
-                            else
-                            ...snapshot.data!.docs.map((DocumentSnapshot document) {
-                            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                            return Column(children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => RecipeScreen(document))
-                                  );
-                                },
-                                style: buttonStyle,
-                                child: ListTile(
-                                  title: Text(
-                                    data['name'],
-                                    style: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand', color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 20), // Padding
-                            ]
-                            );
-                          }).toList()],
-                        )
-                      );
-                    },
-                  ),
                 ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _recipesRef.where('lowerName', isGreaterThanOrEqualTo: _searchQuery.toLowerCase())
+                    .where('lowerName', isLessThan: '${_searchQuery.toLowerCase()}z').snapshots(),
+                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                  if(snapshot.hasError){
+                    return const Text("Something went wrong!");
+                  }
+
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return const Center(
+                      child: CircularProgressIndicator()
+                    );
+                  }
+
+                  // Generate Recipe Menu, Once Recipes have been received.
+                  return ListContainer(
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        if(!snapshot.hasData || snapshot.data!.docs.isEmpty)
+                          const Text("No Recipes Found!!!")
+                        else
+                        ...snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Card(
+                            color: const Color(0xFF526dd1),
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            child: ListTile(
+                              title: Text(
+                                data['name'],
+                                style: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand', color: Colors.white),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => RecipeScreen(document))
+                                );
+                              },
+                            )
+                          )
+                        );
+                      }).toList()],
+                    )
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         backgroundColor: const Color(0xFF36393E));
   }

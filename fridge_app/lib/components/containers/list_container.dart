@@ -7,7 +7,7 @@ class ListContainer extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Expanded(child: Container(
+    return Container(
       decoration: const BoxDecoration(
           color: Colors.black12,
           borderRadius: BorderRadius.all(Radius.circular(20))
@@ -15,8 +15,11 @@ class ListContainer extends StatelessWidget{
       clipBehavior: Clip.antiAlias,
       child: Container(
         margin: const EdgeInsets.all(20),
-        child: child,
-      ),
-    ));
+        child: SingleChildScrollView(child: SizedBox(
+          height: MediaQuery.of(context).size.height - 250,
+          child: child
+        ),
+      )),
+    );
   }
 }

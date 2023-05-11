@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/containers/list_container.dart';
 import 'AddIngredients.dart';
 import 'package:intl/intl.dart';
 
@@ -58,6 +59,7 @@ class MyFlutterState extends State<Ingredients> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -84,52 +86,62 @@ class MyFlutterState extends State<Ingredients> {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
             Row(
               children: <Widget>[
-                const Expanded(
+                Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
+                      onChanged: (value){
+                        setState(() {
+                          // Update Search Query Here
+                        });
+                      },
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Search',
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 0.0)),
+                          filled: true,
+                          fillColor: Colors.black12,
+                          hintText: 'Search...',
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Icon(Icons.search, color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20.0),
+                          )
                       ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
+                )
               ],
             ),
-            Expanded(
-              child: ListView.builder(
+            const SizedBox(height: 20),
+            Expanded(child: Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: ListContainer(child: ListView.builder(
+                shrinkWrap: true,
                 itemCount: _ingredients.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: ListTile(
-                      title: Text(_ingredients[index].name,
-                          style: const TextStyle(
-                              fontFamily: 'CartoonistHand', fontSize: 40)),
-                      onTap: () {
-                        _showIngredientDetails(_ingredients[index]);
-                      },
-                      tileColor: const Color(0xFF526dd1),
-                      textColor: Colors.white,
+                    child: Card(
+                      color: const Color(0xFF526dd1),
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                      child: ListTile(
+                        title: Text(_ingredients[index].name,
+                            style: const TextStyle(
+                                fontFamily: 'CartoonistHand', fontSize: 40)),
+                        onTap: () {
+                          _showIngredientDetails(_ingredients[index]);
+                        },
+                        textColor: Colors.white,
+                      )
                     ),
                   );
                 },
-              ),
-            )
+              )),
+            ))
           ],
         ),
       ),
