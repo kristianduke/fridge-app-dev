@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b8405d3-bb13-4180-9e31-fa6e2e3798a5" name="Changes" comment="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update">
-      <change afterPath="$PROJECT_DIR$/fridge_app/lib/RecipeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fridge-app-dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fridge-app-dev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_05_2023_20_43__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/BrowseRecipes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridge_app/lib/FavouriteRecipes.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/lib/RecipeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/RecipeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridge_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/fridge_app/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +43,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../tools/flutter-sdk/packages/flutter/lib/src/widgets/container.dart" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -44,14 +59,25 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/src/flutter/bin/cache/dart-sdk&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/tools/dart-sdk&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kristian\WebstormProjects\fridge-app-dev\fridge_app\lib" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/fridge_app/lib/main.dart" />
@@ -59,7 +85,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flutter.main.dart" />
         <item itemvalue="Flutter.main.dart" />
       </list>
     </recent_temporary>
@@ -72,6 +97,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679336051409</updated>
+      <workItem from="1683695893451" duration="11897000" />
+      <workItem from="1683751305481" duration="10132000" />
     </task>
     <task id="LOCAL-00001" summary="-Added new screens &#10;-Created respective dart files for the new screens&#10;-Added navigation to each new screen">
       <created>1679338692965</created>
@@ -118,6 +145,9 @@
     <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -129,7 +159,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="UI_branch" />
+                        <option value="firebase-integration" />
                       </list>
                     </value>
                   </entry>
@@ -149,5 +179,9 @@
     <MESSAGE value="- Added buttons to ingredients screen ( not finished )" />
     <MESSAGE value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
     <option name="LAST_COMMIT_MESSAGE" value="-Added Filter buttons and search bar to Browse Recipes&#10;-Added a listview of recipes&#10;-Favourite Functionality not working properly, star icon wont update" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'BrowseRecipes.dart';
-import 'RecipeScreen.dart';
 import 'Ingredients.dart';
 import 'SuggestedRecipes.dart';
 
-void main() {
+// Firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MaterialApp(home: Home()));
 }
 
@@ -124,23 +132,6 @@ class Home extends StatelessWidget {
                   },
                   child: const Text(
                     'Ingredients',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'CartoonistHand',
-                      fontSize: 50.0,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RecipeScreen()),
-                    );
-                  },
-                  child: const Text(
-                    'Recipe screen test',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'CartoonistHand',
