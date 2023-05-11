@@ -16,7 +16,7 @@ class ListContainer extends StatelessWidget{
       child: Container(
         margin: const EdgeInsets.all(20),
         child: SingleChildScrollView(child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: MediaQuery.of(context).size.height * 0.6,
           child: child
         ),
       )),

@@ -115,12 +115,12 @@ class _IngredientsState extends State<Ingredients> {
                         child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: ingredientSnap
-                          .data!.length, //Maybe should be ! instead of ?
+                          .data?.length, //Maybe should be ! instead of ?
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: FutureBuilder<DocumentSnapshot>(
-                                future: ingredientSnap.data![index].ref.get(),
+                                future: ingredientSnap.data?[index].ref.get(),
                                 builder: (fbContext,
                                     AsyncSnapshot<DocumentSnapshot> snapshot) {
                                   if (snapshot.hasError) {
