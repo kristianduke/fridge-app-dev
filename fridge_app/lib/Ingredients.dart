@@ -1,20 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/containers/list_container.dart';
+import 'package:fridge_app/utility/DatabaseManager.dart';
 import 'AddIngredients.dart';
 import 'package:intl/intl.dart';
 
-class Ingredient {
-  String name;
-  String quantity;
-  String weight;
-  DateTime expiryDate;
-
-  Ingredient(
-      {required this.name,
-      required this.quantity,
-      required this.weight,
-      required this.expiryDate});
-}
+import 'data/Recipe.dart';
 
 final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
@@ -25,21 +16,11 @@ class Ingredients extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return MyFlutterState();
+    return _IngredientsState();
   }
 }
 
-class MyFlutterState extends State<Ingredients> {
-
-
-  final List<Ingredient> _ingredients = List.generate(
-      15,
-      (index) => Ingredient(
-          name: 'Ingredient ${index + 1}',
-          quantity: '${index + 1} units',
-          weight: '${(index + 1) * 10} g',
-          expiryDate: DateTime.now()));
-
+class _IngredientsState extends State<Ingredients> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,32 +97,62 @@ class MyFlutterState extends State<Ingredients> {
               ],
             ),
             const SizedBox(height: 20),
-            Expanded(child: Container(
+            Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
-              child: ListContainer(child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: _ingredients.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Card(
-                      color: const Color(0xFF526dd1),
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      child: ListTile(
-                        title: Text(_ingredients[index].name,
-                            style: const TextStyle(
-                                fontFamily: 'CartoonistHand', fontSize: 40)),
-                        onTap: () {
-                          _showIngredientDetails(_ingredients[index]);
-                        },
-                        textColor: Colors.white,
+              child: FutureBuilder<List<Ingredient>?>(
+                future: DatabaseManager.getAllIngredients(),
+                builder: (context, AsyncSnapshot<List<Ingredient>?> ingredientSnap) {
+                  if(ingredientSnap.hasError){
+                    return const Text("Something went wrong!");
+                  }
+
+                  if(ingredientSnap.connectionState == ConnectionState.waiting){
+                    return const Center(
+                        child: CircularProgressIndicator()
+                    );
+                  }
+
+                  return ListContainer(child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: ingredientSnap.data!.length, //Maybe should be ! instead of ?
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: FutureBuilder<DocumentSnapshot>(
+                        future: ingredientSnap.data![index].ref.get(),
+                        builder: (fbContext, AsyncSnapshot<DocumentSnapshot> snapshot){
+                          if(snapshot.hasError){
+                            return const Text("Something went wrong!");
+                          }
+
+                          if(snapshot.connectionState == ConnectionState.waiting){
+                            return const Center(
+                                child: CircularProgressIndicator()
+                            );
+                          }
+
+                          return  Card(
+                            color: const Color(0xFF526dd1),
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            child: ListTile(
+                              title: Text(snapshot.data?.get('name'),
+                                  style: const TextStyle(
+                                      fontFamily: 'CartoonistHand', fontSize: 40)),
+                              onTap: () {
+                                _showIngredientDetails(ingredientSnap.data![index], snapshot.data?.get('name'));
+                              },
+                              textColor: Colors.white,
+                            )
+                          );
+                        }
                       )
-                    ),
-                  );
-                },
-              )),
-            ))
+                    );
+                  },
+                  ));
+                }
+              ),
+            ),
           ],
         ),
       ),
@@ -149,7 +160,7 @@ class MyFlutterState extends State<Ingredients> {
     );
   }
 
-  void _showIngredientDetails(Ingredient ingredient) {
+  void _showIngredientDetails(Ingredient ingredient, String name) {
     final ButtonStyle buttonStyleRed = ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         textStyle: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand'),
@@ -160,7 +171,7 @@ class MyFlutterState extends State<Ingredients> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            ingredient.name,
+            name,
             style: const TextStyle(
                 fontFamily: 'CartoonistHand',
                 fontSize: 60,
@@ -170,7 +181,7 @@ class MyFlutterState extends State<Ingredients> {
             child: ListBody(
               children: <Widget>[
                 Text(
-                  "Quantity: ${ingredient.quantity}",
+                  "Quantity: ${ingredient.amount}",
                   style: const TextStyle(
                       fontFamily: 'CartoonistHand',
                       fontSize: 30,

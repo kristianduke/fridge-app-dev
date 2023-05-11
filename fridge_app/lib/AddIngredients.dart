@@ -1,15 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fridge_app/data/Recipe.dart';
+import 'package:fridge_app/utility/DatabaseManager.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class AddIngredients extends StatefulWidget {
   const AddIngredients({super.key});
 
   @override
-  State<AddIngredients> createState() => AddIngredientsState();
+  State<AddIngredients> createState() => _AddIngredientsState();
 }
 
-class AddIngredientsState extends State<AddIngredients> {
+class _AddIngredientsState extends State<AddIngredients> {
   DateTime today = DateTime.now();
+  String amount = "";
+  String weight = "";
+
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
@@ -144,7 +150,9 @@ class AddIngredientsState extends State<AddIngredients> {
               height: 70,
               child: ElevatedButton(
                 style: buttonStyle,
-                onPressed: () {},
+                onPressed: () {
+                  DatabaseManager.addRecipe(Ingredient(ref: FirebaseFirestore.instance.doc("/ingredients/tomato"), amount: amount, weight: weight, expiryDate: today));
+                },
                 child: const Text(
                   'Add',
                   style: TextStyle(fontSize: 30),
