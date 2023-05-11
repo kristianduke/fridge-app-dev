@@ -20,6 +20,9 @@ class Ingredients extends StatefulWidget {
 }
 
 class _IngredientsState extends State<Ingredients> {
+  final _ingredientsRef = FirebaseFirestore.instance.collection('ingredients');
+  String _searchQuery = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,11 +74,11 @@ class _IngredientsState extends State<Ingredients> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding:   EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       onChanged: (value) {
                         setState(() {
-                          // Update Search Query Here
+                          _searchQuery = value;
                         });
                       },
                       style: const TextStyle(color: Colors.white),
@@ -98,63 +101,52 @@ class _IngredientsState extends State<Ingredients> {
             const SizedBox(height: 20),
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
-              child: FutureBuilder<List<Ingredient>?>(
-                  future: DatabaseManager.getAllIngredients(),
-                  builder: (context,
-                      AsyncSnapshot<List<Ingredient>?> ingredientSnap) {
-                    if (ingredientSnap.hasError) {
-                      return const Text("Something went wrong!");
-                    }
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _ingredientsRef.where('lowerName', isGreaterThanOrEqualTo: _searchQuery.toLowerCase())
+                    .where('lowerName', isLessThan: '${_searchQuery.toLowerCase()}z').snapshots(),
+                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                  if(snapshot.hasError){
+                    return const Text("Something went wrong!");
+                  }
 
-                    if (ingredientSnap.connectionState ==
-                        ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return const Center(
+                        child: CircularProgressIndicator()
+                    );
+                  }
 
-                    return ListContainer(
-                        child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: ingredientSnap
-                          .data!.length, //Maybe should be ! instead of ?
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: FutureBuilder<DocumentSnapshot>(
-                                future: ingredientSnap.data![index].ref.get(),
-                                builder: (fbContext,
-                                    AsyncSnapshot<DocumentSnapshot> snapshot) {
-                                  if (snapshot.hasError) {
-                                    return const Text("Something went wrong!");
-                                  }
-
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Center(
-                                        child: CircularProgressIndicator());
-                                  }
-
-                                  return Card(
+                  // Generate Ingredients Menu, Once Ingredients have been received.
+                  return ListContainer(
+                      child: ListView(
+                        scrollDirection: Axis.vertical,
+                        children: [
+                          if(!snapshot.hasData || snapshot.data!.docs.isEmpty)
+                            const Text("No Ingredients Found!!!")
+                          else
+                            ...snapshot.data!.docs.map((DocumentSnapshot document) {
+                              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                              return Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                                  child: Card(
                                       color: const Color(0xFF526dd1),
                                       shadowColor: Colors.transparent,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                                       child: ListTile(
-                                        title: Text(snapshot.data?.get('name'),
-                                            style: const TextStyle(
-                                                fontFamily: 'CartoonistHand',
-                                                fontSize: 40)),
+                                        title: Text(
+                                          data['name'],
+                                          style: const TextStyle(fontSize: 20, fontFamily: 'CartoonistHand', color: Colors.white),
+                                        ),
                                         onTap: () {
-                                          _showIngredientDetails(
-                                              ingredientSnap.data![index],
-                                              snapshot.data?.get('name'));
+
                                         },
-                                        textColor: Colors.white,
-                                      ));
-                                }));
-                      },
-                    ));
-                  }),
+                                      )
+                                  )
+                              );
+                            }).toList()],
+                      )
+                  );
+                },
+              ),
             ),
           ],
         ),
